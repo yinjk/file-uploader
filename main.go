@@ -56,7 +56,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
     root := "images/" + year + "/" + month + "/" + day + "/"
 
     if !util.ExistsFile(RootPath + root) {
-        os.Mkdir(RootPath + root, 0777)
+        os.MkdirAll(RootPath + root, 0777)
     }
     filePath := root + strconv.Itoa(now.Nanosecond()) + fileType //将文件名转化成时间戳
     f, err := os.OpenFile(fileName, os.O_RDWR|os.O_CREATE, 0666)
